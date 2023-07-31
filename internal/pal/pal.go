@@ -37,7 +37,7 @@ func init() {
 	errorLogger = log.New(file, "ERROR: ", log.Ldate|log.Ltime|log.Lshortfile)
 }
 
-func PrintLog(level string, msg string) {
+func PrintLog(level string, msg any) {
 	switch level {
 	case Info:
 		infoLogger.Println(msg)
@@ -54,6 +54,7 @@ func BaseDir() (string, error) {
 	if err != nil {
 		return "", err
 	}
+
 	return path, nil
 }
 
@@ -63,7 +64,7 @@ func LogPath() (string, error) {
 		return "", err
 	}
 	now := time.Now()
-	logDate := now.Format("03-01-2006_15.04.05")
+	logDate := now.Format("01-02-2006_15.04.05")
 	logName := logDate + "_GoReyGo.log"
 	return filepath.Join(baseDir, logDir, logName), nil
 }

@@ -27,6 +27,6 @@ func main() {
 
 	var g game.Game
 	if err := ebiten.RunGame(&g); err != nil {
-		panic(err)
+		pal.PrintLog(pal.Error, err)
 	}
 }
